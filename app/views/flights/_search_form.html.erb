@@ -1,0 +1,34 @@
+Flight Found <br>
+	
+	
+	<%= form_tag(root_path, method: "get") do %>
+	<table>
+	<thead>
+	    <tr>
+	    <th>Select</th>
+	     <th width = "100">Date</th>
+	      <th width = "100">Departs</th>
+	      <th width = "50">From</th>
+	      <th width = "40">To</th>
+	      
+	      <th width ="50">Duration</th>
+
+	    </tr>
+    </thead>
+
+	<tbody>
+        <tr>
+		<td><%= radio_button_tag :flight_id, @flights.id%></td> 
+		<td><%=@flights.start.to_date%></td>
+		<td><%=@flights.start.to_time.strftime('%H:%M:%S %Z')%> PM</td>
+		<td><%=@flights.from_airport.name%></td>
+		<td><%=@flights.to_airport.name%></td>
+		
+		<td><%=@flights.duration%> Hours</td>
+		</tr>      
+      </tbody>
+  </table>
+  <%= hidden_field_tag :passengers, params[:passengers] %>
+  	 <%= submit_tag("Select Flight") %>
+
+	<% end %>

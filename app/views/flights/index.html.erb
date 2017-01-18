@@ -1,0 +1,16 @@
+Flights
+
+<%= form_tag(root_path, method: "get") do %>
+  <%= select_tag :from, options_for_select(@flight_options),  prompt: "From" %>
+  <%= select_tag :to, options_for_select(@flight_options),  prompt: "To" %>
+  <%= select_tag :dates, options_for_select(@dates),  prompt: "Date" %>
+  <%= select_tag :passengers, options_for_select(@passenger),  prompt: "Passengers" %>
+  <%= hidden_field_tag :day, @day %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<%if @flights.blank?%>
+	No Flights Found
+	<%else%>
+	<%= render 'search_form'%>
+<%end%>
